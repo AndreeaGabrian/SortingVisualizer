@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="958.0" prefWidth="1211.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.ex1.SortingController">
+   <right>
+       <VBox alignment="CENTER" minHeight="-Infinity" minWidth="-Infinity" prefHeight="858.0" prefWidth="237.0" BorderPane.alignment="CENTER">
+           <padding>
+               <Insets bottom="25.0" right="25.0" top="25.0" />
+           </padding>
+          <children>
+            <VBox prefHeight="621.0" prefWidth="230.0">
+               <children>
+                  <Pane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="2.0" layoutY="34.0" prefHeight="20.0" prefWidth="139.0" text="Best time complexity:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutY="90.0" prefHeight="20.0" prefWidth="149.0" text="Worst time complexity:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutY="62.0" prefHeight="20.0" prefWidth="163.0" text="Average time complexity:">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="51.0" layoutY="2.0" text="Performance">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="best" layoutX="163.0" layoutY="36.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="average" layoutX="163.0" layoutY="64.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="worst" layoutX="163.0" layoutY="92.0">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+            <VBox fillWidth="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="226.0" prefWidth="196.0">
+               <children>
+                    <Button fx:id="generate" mnemonicParsing="false" onMouseClicked="#generateNewConfiguration" prefHeight="33.0" prefWidth="183.0" text="Generate New Configuration">
+                       <VBox.margin>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                       </VBox.margin>
+                    </Button>
+                  <Button fx:id="resumeSorting" alignment="CENTER" mnemonicParsing="false" onAction="#run" prefHeight="29.0" prefWidth="183.0" text="Start">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+                  <Button fx:id="stopSorting" mnemonicParsing="false" onAction="#stop" prefHeight="29.0" prefWidth="182.0" text="Stop">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Button>
+               </children>
+            </VBox>
+            <VBox prefHeight="644.0" prefWidth="196.0">
+               <children>
+                  <Pane prefHeight="276.0" prefWidth="196.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="61.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: #93BDD6;" />
+                        <Label layoutX="14.0" layoutY="166.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: #a0db8e;" />
+                        <Label layoutX="14.0" layoutY="110.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: #ab2c49;" />
+                        <Label layoutX="47.0" layoutY="14.0" prefHeight="25.0" prefWidth="118.0" text="Color legend">
+                           <font>
+                              <Font name="System Bold" size="16.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="84.0" layoutY="67.0" text="default bar">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="84.0" layoutY="116.0" text="current bar ">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="84.0" layoutY="172.0" text="next target bar">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="14.0" layoutY="215.0" prefHeight="28.0" prefWidth="43.0" style="-fx-background-color: #daa520;" />
+                        <Label layoutX="84.0" layoutY="221.0" text="min value bar">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </Pane>
+               </children>
+            </VBox>
+          </children>
+       </VBox>
+   </right>
+   <center>
+      <Canvas fx:id="mainCanvas" height="808.0" width="922.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+         </BorderPane.margin>
+      </Canvas>
+   </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="100.0" prefWidth="213.0">
+               <children>
+                    <Label prefHeight="17.0" prefWidth="274.0" text="Sorting Algorithm">
+                       <VBox.margin>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                       </VBox.margin>
+                    </Label>
+                    <ComboBox fx:id="comboBoxSortingAlgorithms" prefHeight="25.0" prefWidth="261.0">
+                       <VBox.margin>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                       </VBox.margin>
+                    </ComboBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="213.0">
+               <children>
+                    <Label prefHeight="17.0" prefWidth="244.0" text="Array Size">
+                       <VBox.margin>
+                           <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                       </VBox.margin>
+                    </Label>
+                  <ComboBox fx:id="arraySize" prefHeight="25.0" prefWidth="218.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </ComboBox>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="213.0">
+               <children>
+                  <Label prefHeight="17.0" prefWidth="206.0" text="Visualization Speed">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Label>
+                  <Slider fx:id="sliderSpeed" majorTickUnit="9.0" max="10.0" maxHeight="-Infinity" maxWidth="-Infinity" min="1.0" minHeight="-Infinity" minWidth="-Infinity" minorTickCount="8" showTickLabels="true" showTickMarks="true" snapToTicks="true" stylesheets="@style.css" value="1.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </Slider>
+               </children>
+            </VBox>
+            <VBox prefHeight="100.0" prefWidth="213.0" />
+         </children>
+      </HBox>
+   </top>
+</BorderPane>
